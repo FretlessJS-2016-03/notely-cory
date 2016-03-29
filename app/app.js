@@ -1,22 +1,14 @@
 (function() {
-  var app = angular.module('notely', [
-    'ui.router'
-  ]);
+    var app = angular.module('notely', [
+        'ui.router',
+        'notely.notes'
+    ]);
 
-  function config($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/notes');
+    function config($urlRouterProvider) {
+        $urlRouterProvider.otherwise('/notes');
 
-    $stateProvider
+    }
 
-      .state('notes', {
-        url: '/notes',
-        template: '<h1>Notely</h1><p>{{ message }}</p>',
-        controller: function($scope) {
-          $scope.message = "Welcome to Notely, friend!";
-        }
-      });
-  }
-  
-  config['$inject'] = ['$stateProvider', '$urlRouterProvider'];
-  app.config(config);
+    config.$inject = ['$urlRouterProvider'];
+    app.config(config);
 })();
