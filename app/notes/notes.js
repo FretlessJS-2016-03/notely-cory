@@ -10,14 +10,19 @@
         $stateProvider
             .state('notes', {
                 url: '/notes',
-                //template: '<h1> Notely</h1> <p> {{ message }} </p>',
+                //template: '<h1> Notely</h1> <p> {{ message }} </p><div ui-view></div>',
                 templateUrl: '/notes/notes.html',
                 controller: NotesController
+            })
+            
+            .state('notes.form', {
+                url: '/:noteId',
+                templateUrl: '/notes/notes-form.html' 
             });
     }
     
-    NotesController.$inject = ['$scope'];
-    function NotesController($scope){
-        $scope.message = "I <3 Angular.";
+    NotesController.$inject = ['$state'];
+    function NotesController($state){
+        $state.go('notes.form');
     }
 })();
