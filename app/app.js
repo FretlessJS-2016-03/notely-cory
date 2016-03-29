@@ -16,7 +16,7 @@
         }
       });
   }
-
+  
   config['$inject'] = ['$stateProvider', '$urlRouterProvider'];
   app.config(config);
 })();
