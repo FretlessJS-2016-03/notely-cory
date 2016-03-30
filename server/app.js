@@ -1,15 +1,10 @@
 var express = require('express');
 var app = express();
-var notes = [
-    {
-        "title": "My cool note",
-        "body": "Cool isn't it?"
-    },
-    {
-        "title": "Whatevs",
-        "body": "Dawson's Creek"
-    }
-]
+
+app.use(function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+});
 
 app.get('/', function(request, response) {
     response.json(

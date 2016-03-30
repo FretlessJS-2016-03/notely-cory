@@ -23,7 +23,9 @@
     
     NotesController.$inject = ['$state', 'NotesService'];
     function NotesController($state, NotesService){
-        NotesService.fetch();
+        NotesService.fetch(function(){
+            console.log(NotesService.getNotes().length);
+        });
         $state.go('notes.form');
     }
 })();
