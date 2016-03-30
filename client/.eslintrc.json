@@ -15,6 +15,9 @@
             "warn",
             "single"
         ],
+        "no-console": [
+            "off"
+        ],
         "semi": [
             "error",
             "always"

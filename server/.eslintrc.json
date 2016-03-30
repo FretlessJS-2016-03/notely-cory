@@ -20,7 +20,7 @@
             "always"
         ],
         "no-console": [
-            "warn"
+            "off"
         ],
         "dot-notation": [
           "error"
