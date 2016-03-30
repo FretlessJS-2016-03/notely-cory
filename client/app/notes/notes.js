@@ -21,10 +21,10 @@
             });
     }
     
-    NotesController.$inject = ['$state', 'NotesService'];
-    function NotesController($state, NotesService){
+    NotesController.$inject = ['$state', '$scope', 'NotesService'];
+    function NotesController($state, $scope, NotesService){
         NotesService.fetch(function(){
-            console.log(NotesService.getNotes().length);
+            $scope.notes = NotesService.getNotes();
         });
         $state.go('notes.form');
     }

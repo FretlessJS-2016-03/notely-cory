@@ -16,6 +16,14 @@ app.get('/', function(request, response) {
             {
                 title: "Whatevs",
                 body: "Dawson's Creek"
+            },
+            {
+                title: "Note #3",
+                body: "Even more text for note #3"
+            },
+            {
+                title: "Note #4",
+                body: "Even more text for note #4. TEEEEXXXT"
             }
         ]
 

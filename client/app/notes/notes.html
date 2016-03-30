@@ -4,11 +4,11 @@
             <button class="new-note btn btn-default">
                 New Note
             </button>
-            <ul id="notes">
-                <li>{{data}}</li>
-                <li>Note 1</li>
-                <li>Note 2</li>
-                <li>Note 3</li>
+            <ul id="notes" >
+                <li ng-repeat="note in notes">
+                    <div class="note-title">{{note.title}}</div>
+                    <div class="note-body"> {{note.body}}</div>
+               </li>
             </ul>
         </nav>
         <ui-view class="col-xs-8"></uiview>
