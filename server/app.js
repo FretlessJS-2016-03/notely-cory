@@ -1,34 +1,28 @@
 var express = require('express');
-var app = express();
+var notelyServerApp = express();
 
-app.use(function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    next();
+var db = require('mongoose');
+db.connect('mongodb://localhost:27017/notely');
+
+var NoteSchema = db.Schema({
+  title: String,
+  body: String
 });
 
-app.get('/', function(request, response) {
-    response.json(
-        [
-            {
-                title: "My cool note",
-                body: "Cool isn't it?"
-            },
-            {
-                title: "Whatevs",
-                body: "Dawson's Creek"
-            },
-            {
-                title: "Note #3",
-                body: "Even more text for note #3"
-            },
-            {
-                title: "Note #4",
-                body: "Even more text for note #4. TEEEEXXXT"
-            }
-        ]
+var Note = db.model('Note', NoteSchema);
 
-    );
-})
-    .listen(3030, function() {
-        console.log("Listening on 3030 suckah");
-    });
+// Cross-Origin Resource Sharing (CORS) middleware
+notelyServerApp.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
+
+notelyServerApp.get('/', function(req, res) {
+  Note.find().then(function(notes) {
+    res.json(notes);
+  });
+});
+
+notelyServerApp.listen(3030, function() {
+  console.log('Listening on http://localhost:3030');
+});
