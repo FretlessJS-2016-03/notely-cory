@@ -1,8 +1,8 @@
 var db = require('../config/db');
 
 var NoteSchema = db.Schema({
-  title: String,
-  body: String
+    title: String,
+    body: String
 });
 
-module.exports = NoteSchema
+module.exports = NoteSchema;

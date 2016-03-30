@@ -4,14 +4,14 @@ var Note = require('./models/note');
 
 // Cross-Origin Resource Sharing (CORS) middleware
 notelyServerApp.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
 });
 
 notelyServerApp.get('/', function(req, res) {
-  Note.find().then(function(notes) {
-    res.json(notes);
-  });
+    Note.find().then(function(notes) {
+        res.json(notes);
+    });
 });
 
 // notelyServerApp.post('/', function(req, res) {
@@ -21,5 +21,5 @@ notelyServerApp.get('/', function(req, res) {
 // });
 
 notelyServerApp.listen(3030, function() {
-  console.log('Listening on http://localhost:3030');
+    console.log('Listening on http://localhost:3030');
 });

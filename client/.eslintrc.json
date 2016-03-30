@@ -1,0 +1,32 @@
+{
+    "env": {
+        "browser": true
+    },
+    "globals": {
+      "angular": true
+    },
+    "extends": "eslint:recommended",
+    "rules": {
+        "indent": [
+            "error",
+            4
+        ],
+        "quotes": [
+            "warn",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "dot-notation": [
+          "error"
+        ],
+        "eqeqeq": [
+          "error"
+        ],
+        "no-implicit-globals": [
+          "error"
+        ]
+    }
+}
