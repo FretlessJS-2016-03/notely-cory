@@ -32,12 +32,7 @@
             body: 'Something something something'
         };
         $scope.save = function(){
-            // NotesService.saveNote(
-            //     {
-            //         title: $scope.note.title,
-            //         body: $scope.note.body
-            //     }
-            //     );
+            NotesService.create($scope.note);
         };
     }
 })();
