@@ -1,15 +1,6 @@
 var express = require('express');
 var notelyServerApp = express();
-
-var db = require('mongoose');
-db.connect('mongodb://localhost:27017/notely');
-
-var NoteSchema = db.Schema({
-  title: String,
-  body: String
-});
-
-var Note = db.model('Note', NoteSchema);
+var Note = require('./models/note');
 
 // Cross-Origin Resource Sharing (CORS) middleware
 notelyServerApp.use(function(req, res, next) {
@@ -22,6 +13,12 @@ notelyServerApp.get('/', function(req, res) {
     res.json(notes);
   });
 });
+
+// notelyServerApp.post('/', function(req, res) {
+//   Note.insert().then(function(notes) {
+//     res.json(notes);
+//   });
+// });
 
 notelyServerApp.listen(3030, function() {
   console.log('Listening on http://localhost:3030');
