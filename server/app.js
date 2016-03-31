@@ -24,7 +24,7 @@ notelyServerApp.post('/notes', function(req, res) {
         title: req.body.note.title,
         body: req.body.note.body
     });
-    note.save().then(function(noteData){
+    note.save().then(function(noteData) {
         res.json({
             message: 'Saved!',
             note: noteData
