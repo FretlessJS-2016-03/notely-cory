@@ -38,6 +38,8 @@
         };
         $scope.deleteNote = function(note){
             NotesService.remove(note);
+            $state.go('notes.form');
+                     
         };
     }
     NotesFormController.$inject = ['$scope', '$state', 'NotesService'];

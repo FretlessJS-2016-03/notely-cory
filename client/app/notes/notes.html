@@ -4,14 +4,14 @@
             <a id="plus-note" class="new-note"><i class="fa fa-plus fa-2x" ui-sref="notes.form({noteId: undefined})"></i></a>
             <ul id="notes">
 
-                <li ng-repeat="note in notes | orderBy: '-updated_at' track by note._id" ui-sref="notes.form({noteId: note._id})">
+                <li ng-repeat="note in notes | orderBy: '-updated_at' track by note._id" >
                     <div class="row">
-                        <div class="col-xs-8">
+                        <div class="col-xs-9" ui-sref="notes.form({noteId: note._id})">
                             <div class="note-title" ui-sref="notes.form({noteId: undefined})">{{note.title }}</div>
                             <div class="note-body"> Updated at {{note.updated_at | date: 'shortTime' }}</div>
                             <div class="note-body"> {{note.body | limitTo: 40}} {{note.body.length > 40 ? '...' : ''}}</div>
                         </div>
-                        <div class="col-xs-4">
+                        <div class="col-xs-3">
                             <i id="trash" class="fa fa-trash-o" ng-click="deleteNote(note)"></i>
                         </div>
                     </div>
