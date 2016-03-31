@@ -36,6 +36,9 @@
         $scope.clearForm = function() {
             $scope.note = {};
         };
+        $scope.deleteNote = function(note){
+            NotesService.remove(note);
+        };
     }
     NotesFormController.$inject = ['$scope', '$state', 'NotesService'];
     function NotesFormController($scope, $state, NotesService) {
@@ -48,5 +51,6 @@
                 NotesService.create($scope.note);
             }
         };
+        
     }
 })();

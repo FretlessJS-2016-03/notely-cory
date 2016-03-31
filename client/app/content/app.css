@@ -127,3 +127,12 @@ textarea{
     float: right;
     margin-right: 2px;
 }
+#trash{
+  color: #ccc;
+  font-size: 200%;
+  margin-top: 40px;
+  vertical-align: middle;
+  margin-left: 1em; }
+  #trash:hover {
+    color: #999; }
+    

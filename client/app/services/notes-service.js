@@ -41,6 +41,13 @@
                 }
             } 
         };
+        _this.deleteNote = function(noteToDelete){
+            for(var i = 0; i < _this.notes.length; i++){
+                if(_this.notes[i]._id ===noteToDelete._id){
+                    _this.notes.splice(i,1);
+                }
+            } 
+        };
         _this.transfigure = function(note){
             $http.put('http://localhost:3030/notes/' + note._id, {
                 note: {
@@ -50,8 +57,14 @@
             })
             .then(function(response) {
                 _this.replaceNote(response.data.note);
-            })
-            ;
+            });
+            
+        };
+        _this.remove = function(note){
+            $http.delete('http://localhost:3030/notes/' + note._id)
+           .then(function(response){
+               _this.deleteNote(response.data.note);
+           });
         };
     }
 })();
