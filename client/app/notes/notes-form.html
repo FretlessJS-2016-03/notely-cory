@@ -5,7 +5,10 @@
     <p>
         <textarea name="body_html" placeholder="Just start typing..." ng-model="note.body"></textarea>
         <div class="form actions">
-            <input type="submit" name="commit" value="Save" class="btn btn-default">
+            <input type="submit" name="commit" value="Save" class="btn btn-danger pull-right">            
+            <a id="cancel-button" class="new-note btn btn-default pull-right" ui-sref="notes.form({noteId: undefined})"> 
+                Cancel
+            </a>
         </div>
     </p>
 </form>

@@ -17,7 +17,6 @@
             return $http.get('http://localhost:3030/notes')
         .then(function(response) {
             _this.notes = response.data;
-            console.log(response);
         },
         function(response) {
             console.log('That sucks: ' + response);
@@ -25,6 +24,34 @@
         };
         _this.getNotes = function() {
             return _this.notes;
+        };
+        _this.findById = function(id){
+            for(var i = 0; i < _this.notes.length; i++){
+                if(_this.notes[i]._id === id){
+                    return angular.copy(_this.notes[i]);
+                }      
+            }
+            return {};
+        };
+        _this.replaceNote = function(updatedNote){
+            for(var i = 0; i < _this.notes.length; i++){
+                if(_this.notes[i]._id ===updatedNote._id){
+                    // _this.notes[i] = updatedNote;
+                    _this.notes.splice(i,1,updatedNote);
+                }
+            } 
+        };
+        _this.transfigure = function(note){
+            $http.put('http://localhost:3030/notes/' + note._id, {
+                note: {
+                    title: note.title,
+                    body: note.body
+                }
+            })
+            .then(function(response) {
+                _this.replaceNote(response.data.note);
+            })
+            ;
         };
     }
 })();

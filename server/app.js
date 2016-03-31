@@ -10,11 +10,12 @@ notelyServerApp.use(bodyParser.json());
 notelyServerApp.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
     next();
 });
 
 notelyServerApp.get('/notes', function(req, res) {
-    Note.find().then(function(notes) {
+    Note.find().sort({updated_at: 'desc'}).then(function(notes) {
         res.json(notes);
     });
 });
@@ -30,6 +31,20 @@ notelyServerApp.post('/notes', function(req, res) {
             note: noteData
         });
     });
+});
+
+notelyServerApp.put('/notes/:noteId', function(req, res){
+    Note.findOne({_id: req.params.noteId}).then(function(note){
+        note.title = req.body.note.title;
+        note.body = req.body.note.body;
+        note.save().then(function() {
+            res.json({
+                message: 'Saved!',
+                note: note
+            });
+        });        
+    });
+    
 });
 
 notelyServerApp.listen(3030, function() {
