@@ -26,5 +26,5 @@
         _this.getNotes = function() {
             return _this.notes;
         };
-      }
+    }
 })();
