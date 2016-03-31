@@ -23,16 +23,16 @@
 
     NotesController.$inject = ['$state', '$scope', 'NotesService'];
     function NotesController($state, $scope, NotesService) {
+        $scope.note = {};        
         NotesService.fetch().then(function() {
             $scope.notes = NotesService.getNotes();
         });
         $state.go('notes.form');
-        $scope.note = {
-            title: 'Static note',
-            body: 'Something something something'
-        };
         $scope.save = function(){
             NotesService.create($scope.note);
+        };
+        $scope.clearForm = function(){
+            $scope.note = {};
         };
     }
 })();
